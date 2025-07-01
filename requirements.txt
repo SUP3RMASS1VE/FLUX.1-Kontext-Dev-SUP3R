@@ -6,4 +6,4 @@ sentencepiece
 devicetorch
 protobuf
 dfloat11[cuda12]
-gradio[mcp]
+gradio
