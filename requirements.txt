@@ -1,0 +1,9 @@
+transformers
+git+https://github.com/huggingface/diffusers.git
+accelerate
+safetensors
+sentencepiece
+devicetorch
+protobuf
+dfloat11[cuda12]
+gradio[mcp]
