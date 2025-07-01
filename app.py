@@ -85,8 +85,11 @@ def infer(input_image, prompt, seed=42, randomize_seed=False, guidance_scale=2.5
         ).images[0]
 
     gradio_temp_dir = os.environ.get('GRADIO_TEMP_DIR', tempfile.gettempdir())
-    temp_file_path = os.path.join(gradio_temp_dir, "image.png")
-    image.save(temp_file_path, format="PNG")
+    temp_file_path = os.path.join(gradio_temp_dir, "image.jpg")
+    # Convert to RGB if image has transparency (RGBA) to save as JPEG
+    if image.mode == 'RGBA':
+        image = image.convert('RGB')
+    image.save(temp_file_path, format="JPEG", quality=95)
     print(f"Image saved in: {temp_file_path}")
 
     gc.collect()
@@ -288,7 +291,8 @@ h1, h1 * {
 }
 
 #row-height {
-    height: 65px !important;
+    height: auto !important;
+    min-height: 120px !important;
 }
 
 /* Button styling */
